@@ -1,5 +1,5 @@
 exports.apiURL = '/api/1.0'
-exports.frontEndDomain = '<app-name>'
+exports.frontEndDomain = 'http://localhost:5000'
 exports.userEndpoints = {
     register: 'register',
     login: 'login',
