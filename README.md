@@ -12,6 +12,7 @@ It helped me solidify the knowledge regarding concepts and technologies such as:
 - MVC architecture
 - among other things
 
+Read this in Portuguese: [Português](https://github.com/allanbernartt/envelopes-api/blob/main/README.pt-br.md)
 ## Running the app
 To run locally, run `npm install`, then `npm start` or `npm run dev`
 
