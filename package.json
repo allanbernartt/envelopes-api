@@ -29,7 +29,6 @@
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.3",
     "request": "^2.88.2",
-    "serve-favicon": "^2.5.0",
     "supertest": "^6.2.3",
     "swagger-jsdoc": "^6.2.1",
     "swagger-ui-express": "^4.4.0",
