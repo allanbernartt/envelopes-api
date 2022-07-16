@@ -2,7 +2,7 @@
 
 Node/Express API with auth flow to manage a portfolio budget using a budget envelope strategy. Users can create, read, update, and delete envelopes as well as create transactions for each individual envelope. All data is persisted in a database using PostgreSQL.
 
-This project was built as part of my personal portfolio.
+This project was built as part of my personal portfolio. It uses [Node v17.x]
 
 It helped me solidify the knowledge regarding concepts and technologies such as:
 - SQL (PostgreSQL)
