@@ -2,7 +2,7 @@
 
 API usando Node/Express, com lógica de autorização e autenticação, para gerenciar um portfólio orçamentário usando a [Técnica dos Envelopes](https://neon.com.br/aprenda/economizar-dinheiro/tecnica-envelopes/). Usuários podem criar, ler, atualizar e deletar envelopes, bem como criar transações para cada envelope. Todos os dados são persistidos usando PostgreSQL.
 
-Leia isso em inglês: [English](https://github.com/allanbernartt/envelopes-api/blob/main/README.md)
+Leia isso em inglês: [README in English](https://github.com/allanbernartt/envelopes-api/blob/main/README.md)
 
 Este projeto foi criado com [Node v17.x] como parte do meu portfólio pessoal.
 
