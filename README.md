@@ -22,6 +22,9 @@ To run locally, run `npm install`, then `npm start` or `npm run dev`
 
 To see a list of available endpoints and their possible HTTP response status codes, as well as expected paramaters when applicable, please install and run the project, then visit `http://localhost:5000/api/1.0/api-docs/`
 
+## Testing
+After installing the project, run `npm test`
+
 ## Demo
 
 To see a working example of this api, please refer to the following:
