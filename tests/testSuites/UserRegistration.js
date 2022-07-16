@@ -192,27 +192,6 @@ const userRegistrationTests = (endpoint) => {
             await pool.query('ROLLBACK')
         })
 
-        ///EMAIL TEST 
-        /*  it('POST sends email', async () => {
-             const emailUser = {
-                 user_name: 'Allan',
-                 user_email: process.env.EMAIL_SENDER,
-                 password: 'P4ssword',
-                 passConfirmation: 'P4ssword',
-                 testMode: false
-             }
-             await pool.query('BEGIN')
-             await postUser(endpoint, emailUser)           
- 
-             await pool.query('ROLLBACK')
-         }) */
-
-        
-
-
-
-
-
     }) // describe block
 
 

@@ -41,10 +41,12 @@ app.use((req, res, next) => {
     next()
 })
 
-app.use(csrfProtection);
+if(process.env.NODE_ENV !== 'test') {
+    app.use(csrfProtection);
 
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'public'));
+    app.set('view engine', 'ejs');
+    app.set('views', path.join(__dirname, 'public'));
+}
 
 app.use(`${apiURL}/api-docs`, docRouter)
 app.use(`${apiURL}/users`, userRegistrationRouter)

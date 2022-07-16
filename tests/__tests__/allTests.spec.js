@@ -13,8 +13,8 @@ const transactionsDisplayTests = require('../testSuites/TransactionsDisplay')
 const authActivationTests = require('../testSuites/Auth')
 
 describe('sequentially run tests', () => {
-
-    accountActivationTests() //ok
+    
+   accountActivationTests() //ok
     userLoginTests(userEndpoints.login) //ok
     authActivationTests() //ok
     emailSentTests(userEndpoints.emailSent) //ok
@@ -22,7 +22,7 @@ describe('sequentially run tests', () => {
     transactionDepositTests('deposit'); //ok
     envelopeTransferTests('transfer'); //ok
     transactionWithdrawTests('withdraw'); //ok
-    passwordResetTest() //ok
+   passwordResetTest() //ok
     transactionsTests();  //ok
     transactionsDisplayTests() //ok
     userRegistrationTests(userEndpoints.register) //ok

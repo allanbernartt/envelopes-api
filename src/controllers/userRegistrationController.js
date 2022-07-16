@@ -9,7 +9,7 @@ require('dotenv').config()
 // @desc		Creates a new user
 // @route		POST /api/1.0/users/register
 exports.postUserRegistration = async (req, res) => {
-
+    
     const errors = validationResult(req)
 
     if (!errors.isEmpty()) {
@@ -26,7 +26,7 @@ exports.postUserRegistration = async (req, res) => {
         await sendEmail(userEndpoints.register, res, user_name, user_email, password, req)
 
     } catch (error) {
-
+        
         return res.status(500).send()
     }
 }
@@ -34,7 +34,7 @@ exports.postUserRegistration = async (req, res) => {
 // @desc		Logs User in
 // @route		POST /api/1.0/users/login
 exports.postLogin = async (req, res) => {
-
+    
     const errors = validationResult(req)
 
     if (!errors.isEmpty()) {
@@ -82,7 +82,7 @@ exports.postLogin = async (req, res) => {
         return res.status(200).send({ userId: user.rows[0].user_id, token: token })
 
     } catch (error) {
-        
+       
         await pool.query('ROLLBACK')
 
         if (error.message === 'activation') {
@@ -145,6 +145,7 @@ exports.getAccountActivation = async (req, res) => {
 // @desc		Resend Activation Email
 // @route		POST /api/1.0/users/resend-activation-email
 exports.postResendAccountActivation = async (req, res) => {
+   
     const { user_email } = req.body
     const errors = validationResult(req)
 
@@ -167,7 +168,7 @@ exports.postResendAccountActivation = async (req, res) => {
         await sendEmail(userEndpoints.resendAccountActivation, res, null, user_email, null, req)
 
     } catch (error) {
-
+       
         await pool.query('ROLLBACK')
 
         if (error.message === 'No User Found') {
@@ -180,7 +181,7 @@ exports.postResendAccountActivation = async (req, res) => {
 // @desc		Password Reset
 // @route		POST /api/1.0/users/password-reset
 exports.postSendPasswordResetEmail = async (req, res) => {
-
+   
     const errors = validationResult(req)
 
     if (!errors.isEmpty()) {
@@ -197,15 +198,17 @@ exports.postSendPasswordResetEmail = async (req, res) => {
         const isValidUser = await pool.query('SELECT * FROM users WHERE user_email = ($1)', [user_email])
 
         if (isValidUser.rowCount === 0) {
-            throw new Error('Invalid Email')
+            
+            throw new Error(req.t('invalidEmail'))
         }
         
         await sendEmail(userEndpoints.passwordResetEmail, res, null, user_email, null, req)
 
     } catch (error) {
+        
         await pool.query('ROLLBACK')
 
-        if (error.message === 'Invalid Email') {
+        if (error.message === req.t('invalidEmail')) {
             return res.status(404).send({ validationErrors: { invalidEmail: req.t('invalidEmail') } })
         }
 
@@ -217,7 +220,7 @@ exports.postSendPasswordResetEmail = async (req, res) => {
 // @desc		Password Reset
 // @route		GET /api/1.0/users/password-reset/:token
 exports.getPasswordResetToken = async (req, res) => {
-
+    
     const pass_token = req.params.token
 
     if (!pass_token) {
@@ -247,7 +250,7 @@ exports.getPasswordResetToken = async (req, res) => {
         return res.status(200).send({ message: 'ok' })
 
     } catch (error) {
-
+        
         await pool.query('ROLLBACK')
         if (error.message === 'Invalid Token') {
             return res.status(400).send({ message: req.t('invalidToken') })
@@ -260,7 +263,7 @@ exports.getPasswordResetToken = async (req, res) => {
 // @desc		Reset Password
 // @route		POST /api/1.0/users/password-reset/:token
 exports.postNewPassword = async (req, res) => {
-
+    
     const errors = validationResult(req)
 
     if (!errors.isEmpty()) {
@@ -273,7 +276,7 @@ exports.postNewPassword = async (req, res) => {
     const pass_token = req.params.token
 
     if (!pass_token) {
-
+       
         return res.status(404).send({ message: req.t('invalidToken') })
     }
 
@@ -296,7 +299,7 @@ exports.postNewPassword = async (req, res) => {
         return res.status(200).send({ message: 'ok' })
 
     } catch (error) {
-
+        
         await pool.query('ROLLBACK')
         if (error.message === 'User not Found') {
             return res.status(404).send({ message: req.t('invalidToken') })
@@ -309,7 +312,7 @@ exports.postNewPassword = async (req, res) => {
 // @desc		Logs user out
 // @route		POST /api/1.0/users/logout
 exports.postLogout = async (req, res) => {
-
+    
     const user_id = req.user_id
     try {
         await pool.query('BEGIN')
@@ -318,6 +321,7 @@ exports.postLogout = async (req, res) => {
         return res.send({ message: 'ok' })
     
     } catch (error) {
+        
         await pool.query('ROLLBACK')
         return res.status(500).send()
     }
@@ -326,7 +330,7 @@ exports.postLogout = async (req, res) => {
 // @desc		Logs all devices out
 // @route		POST /api/1.0/users/logout-all
 exports.postLogoutAll = async (req, res) => {
-
+    
     const user_id = req.user_id
     try {
         await pool.query('BEGIN')
@@ -334,6 +338,7 @@ exports.postLogoutAll = async (req, res) => {
         await pool.query('COMMIT')
         return res.send({ message: 'ok' })
     } catch (error) {
+        
         await pool.query('ROLLBACK')
         return res.status(500).send()
     }
@@ -342,21 +347,26 @@ exports.postLogoutAll = async (req, res) => {
 //OTHER AVAILABLE ROUTES FOR TEMPLATING
 
 exports.getUserRegistration = async (req, res) => {
+    
     return res.status(200).send()
 }
 
 exports.getEmailSent = (req, res) => {
+    
     return res.send()
 }
 
 exports.getLogin = async (req, res) => {
+   
     return res.send()
 }
 
 exports.getResendAccountActivation = async (req, res) => {
+    
     return res.status(200).send()
 }
 
 exports.getSendPasswordResetEmail = async (req, res) => {
+   
     return res.status(200).send()
 }

@@ -5,9 +5,9 @@ const sgMail = require('@sendgrid/mail')
 const { userRegistrationConfig, userEndpoints, frontEndDomain } = require('./utils')
 const { v4: uuidv4 } = require('uuid')
 
-sgMail.setApiKey(process.env.SEND_GRID)
-
-
+if(process.env.NODE_ENV === 'production') {
+    sgMail.setApiKey(process.env.SEND_GRID)
+}
 const emailMessageAccountActivation = (emailToken, req) => {
     return {
         subject: req.t('accountActivationSubject'),
@@ -18,7 +18,6 @@ const emailMessageAccountActivation = (emailToken, req) => {
         <a href="${frontEndDomain}/users/account/${emailToken}">${req.t('accountActivationClick')}</a>
         `
     }
-
 }
 
 const emailMessagePasswordReset = (emailToken, req) => {
@@ -31,7 +30,6 @@ const emailMessagePasswordReset = (emailToken, req) => {
         <a href="${frontEndDomain}/users/account/password-reset/${emailToken}">${req.t('passwordResetClick')}</a>
         `
     }
-
 }
 
 exports.sendEmail = async (endpoint, res, user_name, user_email, password, req) => {

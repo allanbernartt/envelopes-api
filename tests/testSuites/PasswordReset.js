@@ -173,7 +173,7 @@ const passwordResetTest = () => {
             await pool.query('ROLLBACK')
         })
 
-        it('POST returns 404 if trying to reset password without a token in url', async () => {
+        it('POST returns 500 if trying to reset password without a token in url', async () => {
             const invalidFields = {
                 new_password: 'password',
                 newPassConfirmation: 'password'
@@ -181,10 +181,10 @@ const passwordResetTest = () => {
            
            
             const response = await request(app).post(`${apiURL}/users/${userEndpoints.resetUserPass}`).send(invalidFields)
-            expect(response.status).toBe(404)
+            expect(response.status).toBe(500)
             
           
-        })
+        });
 
         it('POST returns 404 if trying to reset password without a valid token in url', async () => {
             const invalidFields = {
