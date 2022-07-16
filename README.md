@@ -2,6 +2,8 @@
 
 Node/Express API with auth flow to manage a portfolio budget using a [budget envelope strategy](https://www.investopedia.com/envelope-budgeting-system-5208026). Users can create, read, update, and delete envelopes as well as create transactions for each individual envelope. All data is persisted in a database using PostgreSQL.
 
+Read this in Portuguese: [README em Português](https://github.com/allanbernartt/envelopes-api/blob/main/README.pt-br.md)
+
 This project was built as part of my personal portfolio. It uses [Node v17.x]
 
 It helped me solidify the knowledge regarding concepts and technologies such as:
@@ -9,10 +11,10 @@ It helped me solidify the knowledge regarding concepts and technologies such as:
 - Auth flow (authentication, authorization, jwt)
 - Security concerns: XSS attacks and CSRF protection
 - TDD: (jest, supertest)
+- [Internationalization](https://www.npmjs.com/package/i18next)
 - MVC architecture
 - among other things
 
-Read this in Portuguese: [Português](https://github.com/allanbernartt/envelopes-api/blob/main/README.pt-br.md)
 ## Running the app
 To run locally, run `npm install`, then `npm start` or `npm run dev`
 
