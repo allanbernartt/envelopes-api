@@ -2,6 +2,8 @@
 
 API usando Node/Express, com lógica de autorização e autenticação, para gerenciar um portfólio orçamentário usando a [Técnica dos Envelopes](https://neon.com.br/aprenda/economizar-dinheiro/tecnica-envelopes/). Usuários podem criar, ler, atualizar e deletar envelopes, bem como criar transações para cada envelope. Todos os dados são persistidos usando PostgreSQL.
 
+Leia isso em inglês: [English](https://github.com/allanbernartt/envelopes-api/blob/main/README.md)
+
 Este projeto foi criado com [Node v17.x] como parte do meu portfólio pessoal.
 
 Me ajudou a consolidar o conhecimento a respeito dos seguintes conceitos e tecnologias:
@@ -10,10 +12,9 @@ Me ajudou a consolidar o conhecimento a respeito dos seguintes conceitos e tecno
 - Fluxo de Autenticação (autenticação, autorização, jwt)
 - Tópicos de Segurança: ataques XSS e proteção contra CSRF
 - TDD: (jest, supertest)
+- [Internacionalização](https://www.npmjs.com/package/i18next)
 - arquitetura MVC
 - entre outras coisas
-
-Leia isso em inglês: [English](https://github.com/allanbernartt/envelopes-api/blob/main/README.md)
 
 ## Rodando a api
 Para rodar na máquina local, use `npm install` e depois  `npm start` ou `npm run dev`
@@ -21,6 +22,9 @@ Para rodar na máquina local, use `npm install` e depois  `npm start` ou `npm ru
 ## Documentação e Swagger
 
 Para ver uma lista dos endpoints disponíveis e seus possíveis códigos de status HTTP, bem como os parâmetros esperados, favor instalar e rodar o projeto e então visitar `http://localhost:5000/api/1.0/api-docs/`.
+
+## Testes
+Após instalar o projeto, rode `npm test`
 
 ## Demo
 
