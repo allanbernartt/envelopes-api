@@ -13,12 +13,14 @@ if(process.env.NODE_ENV === 'development') {
 
 
 const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${databaseName}`
+let sslOptions;
 
+if(process.env.NODE_ENV === isProduction) {
+    sslOptions = {rejectUnauthorized: false}
+} 
 const pool = new Pool({
     connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
-    ssl: {
-        rejectUnauthorized: false
-      }
+    ssl: sslOptions
   })
 
   module.exports = pool
